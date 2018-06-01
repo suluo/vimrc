@@ -75,6 +75,7 @@ set expandtab
 autocmd FileType python, scala, go setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType c, cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " *********************************************
 " 分割布局相关
