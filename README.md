@@ -18,7 +18,7 @@
 ```bash
 # git clone 获取vim配置并且放在正确的位置
 $ cd ~
-$ git clone https://github.com/Suluo/myconfig
+$ git clone https://github.com/Suluo/vimrc.git
 $ cd ~
 # 如果有老的 .vim/ 文件夹以及 .vimrc 文件，删掉; 软链接
 $ rm -rf .vim/
