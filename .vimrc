@@ -8,19 +8,19 @@ set number relativenumber
 " 行号配置
 " *********************************************
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-"set relativenumber number
-"au FocusLost * :set norelativenumber number
-"au FocusGained * :set relativenumber
-"插入模式下用绝对行号, 普通模式下用相对
-"autocmd InsertEnter * :set norelativenumber number
-"autocmd InsertLeave * :set relativenumber
-"function! NumberToggle()
-"  if(&relativenumber == 1)
-"    set norelativenumber number
-"  else
-"    set relativenumber
-"  endif
-"endfunc
+" set relativenumber number
+" au FocusLost * :set norelativenumber number
+" au FocusGained * :set relativenumber
+" 插入模式下用绝对行号, 普通模式下用相对
+" autocmd InsertEnter * :set norelativenumber number
+" autocmd InsertLeave * :set relativenumber
+" function! NumberToggle()
+"   if(&relativenumber == 1)
+"     set norelativenumber number
+"   else
+"     set relativenumber
+"   endif
+" endfunc
 " nnoremap <C-n> :call NumberToggle()<cr>
 " ********************************************
 " fold配置
@@ -62,8 +62,7 @@ set scrolloff=5 " when scrolling, keep cursor 5 lines away from screen border
 " set mouse=a
 " set selection=exclusive
 " set selectmode=mouse,key
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
 
 " tabs and spaces handling
 set backspace=indent,eol,start
@@ -82,8 +81,8 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " *********************************************
 set splitbelow
 set splitright
-"快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局
-"ctrl+k切换到上面布局，ctrl+j切换到下面布局
+" 快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局
+" ctrl+k切换到上面布局，ctrl+j切换到下面布局
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -151,5 +150,3 @@ func! CompileRunGcc()
             exec "!firefox %.html &"
         endif
 endfunc
-
-
