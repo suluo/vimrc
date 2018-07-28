@@ -19,6 +19,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 " " Airline: 小巧美观的状态栏。
 Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " 目录树
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -53,6 +54,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'nvie/vim-flake8'
 Bundle 'hynek/vim-python-pep8-indent'
 " 补全提示
+Bundle 'klen/python-mode'
 Bundle 'Python-mode-klen'
 " Bundle 'Pydiction' 
 Bundle 'davidhalter/jedi-vim'
@@ -152,13 +154,55 @@ let g:autopep8_disable_show_diff=1
 " 启动指定文件时自动开启tagbar
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+let g:pymode_python="python3"
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
 " syntastic
 let g:syntastic_error_symbol='>>'
 let g:syntastic_warning_symbol='>'
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_enable_highlighting=1
-let g:syntastic_python_checkers=['flake8', 'pep8', 'pyflakes'] " 使用pyflakes,速度比pylint(详细)快
+" let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint(详细)快
+let g:syntastic_python_checkers=['flake8', 'pep8'] " 使用pyflakes,速度比pylint(详细)快
 let g:syntastic_javascript_checkers = ['jsl', 'jshint']
 let g:syntastic_html_checkers=['tidy', 'jshint']
 " 修改高亮的背景色, 适应主题
