@@ -9,6 +9,10 @@
 # Descption    :
 # Version      : Python 3.7
 ############################################
+from __future__ import division
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import unicode_literals
 import argparse
 import time
 import os
@@ -19,8 +23,8 @@ import logging
 # import logging.config
 # from cloghandler import ConcurrentRotatingFileHandler
 # import cloghandler
-logging.config.fileConfig('./conf/logging.ini')
-logger = logging.getLogger(__name__)
+# logging.config.fileConfig('./conf/logging.ini')
+# logger = logging.getLogger(__file__)
 
 
 
