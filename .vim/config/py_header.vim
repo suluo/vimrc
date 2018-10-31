@@ -13,9 +13,10 @@ import argparse
 import time
 import os
 import sys
+import asyncio
 
 import logging
-logging.config.fileConfig('./conf/logging.ini')
+# logging.config.fileConfig('./conf/logging.ini')
 logger = logging.getLogger(__name__)
 
 
@@ -23,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 
 def main(args):
-    return args.num
+    return args
 
 
 if __name__ == "__main__":
