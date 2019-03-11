@@ -35,6 +35,9 @@ $ vim
 # 等待安装完成退出vim
 ```
 
+### git commit
+[提交格式检查](https://github.com/conventional-changelog-archived-repos/validate-commit-msg)
+
 
 ### vim配置参考:
 #### 插件配置
