@@ -95,6 +95,11 @@ Bundle 'FuzzyFinder'
 " ...
 Bundle 'spf13/spf13-vim'
 
+" Go
+Bundle 'vim-go'
+Bundle 'vim-gocode'
+
+
 filetype plugin indent on     " required!
 "
 " Brief help

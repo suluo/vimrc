@@ -117,6 +117,10 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" Go
+" gocode 快捷键
+imap <F6> <C-x><C-o>
+
 " 插件
 if filereadable(expand("~/.vim/.vimrc.bundles"))
 source ~/.vim/.vimrc.bundles
