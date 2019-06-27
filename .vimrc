@@ -5,23 +5,16 @@ syntax on
 set report=0 "通过使用:comands 命令，告诉我们文件哪一行被改过
 set number relativenumber
 " ********************************************
-" 行号配置
+" 行号配置: 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 " *********************************************
-" 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-" set relativenumber number
-" au FocusLost * :set norelativenumber number
-" au FocusGained * :set relativenumber
-" 插入模式下用绝对行号, 普通模式下用相对
-" autocmd InsertEnter * :set norelativenumber number
-" autocmd InsertLeave * :set relativenumber
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     set norelativenumber number
-"   else
-"     set relativenumber
-"   endif
-" endfunc
-" nnoremap <C-n> :call NumberToggle()<cr>
+function! NumberToggle()
+   if(&relativenumber == 1)
+     set norelativenumber nonumber
+   else
+     set relativenumber number
+   endif
+ endfunc
+ nnoremap <C-n> :call NumberToggle()<cr>
 " ********************************************
 " fold配置
 " *********************************************
