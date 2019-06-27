@@ -33,6 +33,11 @@ $ source .vimrc
 $ vim
 :BundleInstall
 # 等待安装完成退出vim
+# 安装go相关插件
+# :GoInstallBinaries
+# 编译 YouCompleteMe
+$ cd ~/.vim/bundle/vundle/YouCompleteMe
+$ ./install.py --clang-completer
 ```
 
 ### git commit

@@ -121,9 +121,13 @@ endif
 " gocode 快捷键
 imap <F6> <C-x><C-o>
 
-" 插件
+" 插件安装
 if filereadable(expand("~/.vim/.vimrc.bundles"))
 source ~/.vim/.vimrc.bundles
+endif
+" 插件配置
+if filereadable(expand("~/.vim/.vimrc.cfg.bundles"))
+source ~/.vim/.vimrc.cfg.bundles
 endif
 """"""""""""""""""""""
 "Quickly Run
@@ -154,3 +158,17 @@ func! CompileRunGcc()
             exec "!firefox %.html &"
         endif
 endfunc
+
+"按F6运行python"
+map <F6> :Autopep8<CR> :w<CR> :call RunPython()<CR>
+function RunPython()
+    let mp = &makeprg
+    let ef = &errorformat
+    let exeFile = expand("%:t")
+    setlocal makeprg=python\ -u
+    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    silent make %
+    copen
+    let &makeprg = mp
+    let &errorformat = ef
+endfunction
