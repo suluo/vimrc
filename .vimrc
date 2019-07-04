@@ -94,6 +94,11 @@ set pastetoggle=<F11>
 " 好处：误删什么的，如果以前屏幕打开，可以找回
 " set t_ti= t_te=
 
+" 拼写检查
+set spell
+setlocal spelllang=en_us,nl,medical
+setlocal spellfile=~/.vim/spell/en.utf-8.add
+
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
