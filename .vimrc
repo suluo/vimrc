@@ -96,8 +96,7 @@ set pastetoggle=<F11>
 
 " 拼写检查
 set spell
-setlocal spelllang=en_us,nl,medical
-setlocal spellfile=~/.vim/spell/en.utf-8.add
+setlocal spelllang=en_us
 
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
