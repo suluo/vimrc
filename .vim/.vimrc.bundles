@@ -60,6 +60,7 @@ Bundle 'Python-mode-klen'
 " Bundle 'Pydiction' 
 " 补全提示
 Bundle 'davidhalter/jedi-vim'
+" Bundle 'zxqfl/tabnine-vim'
 " neocomplete
 " Bundle 'Shougo/neoinclude.vim'
 " Bundle 'Shougo/neco-vim'

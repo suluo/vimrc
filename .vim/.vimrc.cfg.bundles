@@ -12,7 +12,7 @@ let NERDTreeAutoCenter=1
 let NERDTreeShowHidden=1
 " 设置忽略文件类型
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '__pycache__'] 
-let NERDTreeWinSize=35   "窗口大小"
+let NERDTreeWinSize=30   "窗口大小"
 " 在终端启动vim时，共享NERDTree
 let g:nerdtree_tabs_open_on_console_startup=1
 " vim open directory
