@@ -9,29 +9,22 @@
 # Descption    :
 # Version      : Python 3.7
 ############################################
-from __future__ import division
-from __future__ import absolute_import
-from __future__ import print_function
-from __future__ import unicode_literals
 import argparse
 import time
 import os
 import sys
+import asyncio
 
 import logging
-# import logging.handlers
-# import logging.config
-# from cloghandler import ConcurrentRotatingFileHandler
-# import cloghandler
 # logging.config.fileConfig('./conf/logging.ini')
-# logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 
 
 
 
 def main(args):
-    return args.num
+    return args
 
 
 if __name__ == "__main__":

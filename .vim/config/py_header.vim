@@ -10,15 +10,8 @@
 # Version      : Python 3.7
 ############################################
 import argparse
-import time
-import os
-import sys
-import asyncio
-
+import torch
 import logging
-# logging.config.fileConfig('./conf/logging.ini')
-logger = logging.getLogger(__name__)
-
 
 
 

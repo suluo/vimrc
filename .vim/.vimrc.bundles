@@ -61,11 +61,6 @@ Bundle 'Python-mode-klen'
 " 补全提示
 Bundle 'davidhalter/jedi-vim'
 " Bundle 'zxqfl/tabnine-vim'
-" neocomplete
-" Bundle 'Shougo/neoinclude.vim'
-" Bundle 'Shougo/neco-vim'
-" Bundle 'Shougo/neco-syntax'
-" Bundle 'Shougo/neocomplete.vim'
 " " Web
 "神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
 Bundle 'mattn/emmet-vim'
