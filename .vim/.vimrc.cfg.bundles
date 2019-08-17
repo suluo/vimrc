@@ -116,8 +116,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting=1
 "进行实时检查，如果觉得卡顿，将下面的选项置为1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint(详细)快
-"let g:syntastic_python_checkers=['flake8', 'pep8', 'pylint']
+" 使用flake8,速度比pylint(详细)快
+let g:syntastic_python_checkers=['flake8', 'pep8', 'pylint']
 let g:syntastic_javascript_checkers = ['jsl', 'jshint']
 let g:syntastic_html_checkers=['tidy', 'jshint']
 " 修改高亮的背景色, 适应主题

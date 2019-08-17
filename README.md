@@ -9,7 +9,8 @@
 .vimrc
 .vim
     config
-    .vimrc.bundle
+    .vimrc.bundles
+    .vim.cfg.bundles
 # 安装vundle管理vim插件： git clone 获取vundle
 # 安装配置中的vim插件: BundleInstall安装vim插件
 ```
@@ -35,9 +36,6 @@ $ vim
 # 等待安装完成退出vim
 # 安装go相关插件
 # :GoInstallBinaries
-# 编译 YouCompleteMe
-$ cd ~/.vim/bundle/vundle/YouCompleteMe
-$ ./install.py --clang-completer
 ```
 
 ### git commit

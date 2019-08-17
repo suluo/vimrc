@@ -90,8 +90,8 @@ set pastetoggle=<F11>
 " set t_ti= t_te=
 
 " 拼写检查
-set spell
-setlocal spelllang=en_us
+" set spell
+" setlocal spelllang=en_us
 
 filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
