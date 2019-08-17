@@ -19,8 +19,9 @@ rm -rf .vim/
 rm .vimrc
 ln -s vimrc/.vimrc .
 ln -s vimrc/.vim .
-# 获取vundle
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+# 获取 plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # .vimrc 生效
 source .vimrc
 pip install flake8

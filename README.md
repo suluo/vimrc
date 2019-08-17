@@ -1,41 +1,41 @@
 ### .vimrc配置
 [Vimrc复制可用](http://www.cnblogs.com/wangj08/archive/2013/03/13/2957309.html)
+[spf13直接可用](https://github.com/spf13/spf13-vim)
+```bash
+curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+```
 
 [Vim配置、插件和使用技巧](http://www.jianshu.com/p/a0b452f8f720)
 
 ### .vimrc配置步骤
 ```
-# git clone 获取vim并.vimrc, .vimrc.bundle, config正确的位置
+# git clone 获取vim并.vimrc, .vim 正确的位置
 .vimrc
 .vim
     config
-    .vimrc.bundles
-    .vim.cfg.bundles
-# 安装vundle管理vim插件： git clone 获取vundle
-# 安装配置中的vim插件: BundleInstall安装vim插件
+    .vimrc.plugins
+    .vimrc.cfg.plugins
+# 获取plug 插件管理工具
+# 安装配置中的vim插件: PlugInstall安装vim插件
 ```
 
 操作如下
 ```bash
-# git clone 获取vim配置并且放在正确的位置
-$ cd ~
-$ git clone https://github.com/Suluo/vimrc.git
 $ cd ~
 # 如果有老的 .vim/ 文件夹以及 .vimrc 文件，删掉; 软链接
 $ rm -rf .vim/
 $ rm .vimrc
 $ ln -s vimrc/.vimrc .
 $ ln -s vimrc/.vim .
-# 获取vundle
-$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+# 获取Plug: 插件管理工具: https://github.com/junegunn/vim-plug
+$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # .vimrc 生效
 $ source .vimrc
-# BundleInstall安装vim插件
+# PlguInstall安装vim插件
 $ vim
-:BundleInstall
+:PlugInstall
 # 等待安装完成退出vim
-# 安装go相关插件
-# :GoInstallBinaries
 ```
 
 ### git commit

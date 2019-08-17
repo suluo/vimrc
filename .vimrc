@@ -1,5 +1,4 @@
 " ---------------------------- --------------
-set nocompatible
 set showcmd
 syntax on
 set report=0 "通过使用:comands 命令，告诉我们文件哪一行被改过
@@ -114,12 +113,12 @@ endif
 imap <F6> <C-x><C-o>
 
 " 插件安装
-if filereadable(expand("~/.vim/.vimrc.bundles"))
-source ~/.vim/.vimrc.bundles
+if filereadable(expand("~/.vim/.vimrc.plugins"))
+source ~/.vim/.vimrc.plugins
 endif
 " 插件配置
-if filereadable(expand("~/.vim/.vimrc.cfg.bundles"))
-source ~/.vim/.vimrc.cfg.bundles
+if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
+source ~/.vim/.vimrc.cfg.plugins
 endif
 """"""""""""""""""""""
 "Quickly Run
