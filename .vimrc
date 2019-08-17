@@ -1,7 +1,9 @@
-" ---------------------------- --------------
+set nocompatible
 set showcmd
-syntax on
-set report=0 "通过使用:comands 命令，告诉我们文件哪一行被改过
+syntax enable
+" syntax on
+"通过使用:comands 命令，告诉我们文件哪一行被改过
+set report=0 
 set number relativenumber
 " ********************************************
 " 行号配置: 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
@@ -18,7 +20,7 @@ function! NumberToggle()
 " fold配置
 " *********************************************
 set foldenable              " 开始折叠
-"set foldmethod=syntax       " 设置语法折叠
+set foldmethod=syntax       " 设置语法折叠
 set foldmethod=indent
 set foldcolumn=0            " 设置折叠区域的宽度
 setlocal foldlevel=1        " 设置折叠层数为
@@ -43,6 +45,8 @@ set hlsearch
 set showmatch
 set ignorecase
 set matchtime=1
+" 最大列
+set cc=120
 
 " 状态行
 " set cmdheight=2 " 命令行高度
@@ -82,11 +86,9 @@ noremap <silent><expr> j (v:count == 0? 'gj': 'j')
 noremap <silent><expr> k (v:count == 0? 'gk': 'k')
 set clipboard+=unnamed "共享剪贴板
 set mouse=nicr
-set completeopt=preview,menu " 代码补全
 set pastetoggle=<F11>
-" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
-" 好处：误删什么的，如果以前屏幕打开，可以找回
-" set t_ti= t_te=
+" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉; 好处：误删什么的，如果以前屏幕打开，可以找回
+set t_ti= t_te=
 
 " 拼写检查
 " set spell
@@ -94,7 +96,7 @@ set pastetoggle=<F11>
 
 filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
-set completeopt=longest,menu
+set completeopt=preview,longest,menu " 代码补全
 " 文件头
 source ~/.vim/config/bufnewfile.vimrc
 " autocmd BufNewFile *.sh exec ":call AutoSetShFileHead()"

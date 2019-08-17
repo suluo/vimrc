@@ -1,6 +1,5 @@
 " start vim plug
 " filetype off                   " required!
-set rtp+=~/.vim/Plug/vundle/
 call plug#begin('~/.vim/plugged')
 
 " required! 
@@ -56,8 +55,6 @@ Plug 'drmingdrmer/xptemplate'
 " 补全提示: \
 Plug 'davidhalter/jedi-vim'
 " vim 8
-" 快速补全
-" Plug 'completor.vim'
 " 深度学习补全
 " Plug 'zxqfl/tabnine-vim'
 

@@ -1,13 +1,5 @@
-### .vimrc配置
-[Vimrc复制可用](http://www.cnblogs.com/wangj08/archive/2013/03/13/2957309.html)
-[spf13直接可用](https://github.com/spf13/spf13-vim)
-```bash
-curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
-```
 
-[Vim配置、插件和使用技巧](http://www.jianshu.com/p/a0b452f8f720)
-
-### .vimrc配置步骤
+### 本项目 .vimrc配置步骤
 ```
 # git clone 获取vim并.vimrc, .vim 正确的位置
 .vimrc
@@ -38,11 +30,21 @@ $ vim
 # 等待安装完成退出vim
 ```
 
+
+### 其他.vimrc配置
+[Vimrc复制可用](http://www.cnblogs.com/wangj08/archive/2013/03/13/2957309.html)
+[spf13直接可用](https://github.com/spf13/spf13-vim)
+```bash
+curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+```
+
+
 ### git commit
 [提交格式检查](https://github.com/conventional-changelog-archived-repos/validate-commit-msg)
 
 
 ### vim配置参考:
+[Vim配置、插件和使用技巧](http://www.jianshu.com/p/a0b452f8f720)
 #### 插件配置
 [把vim配置成顺手的python轻量级IDE](http://www.jianshu.com/p/f0513d18742a)
 ##### pydiction
