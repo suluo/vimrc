@@ -40,8 +40,8 @@ Plug 'hdima/python-syntax'
 Plug 'w0rp/ale'
 " python import sort
 Plug 'fisadev/vim-isort'
-" python-mode 和 python-mode-klen是一个东西
-Plug 'klen/python-mode', { 'for': 'python', 'branch': 'develop' } 
+" python-mode: PyLint, Rope, Pydoc, breakpoints from box.
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' } 
 " 符号补全
 Plug 'jiangmiao/auto-pairs' 
 " 需要为已一些存在的代码加上括号，删除一对括号但保留其中的内容

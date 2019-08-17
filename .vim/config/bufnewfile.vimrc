@@ -1,17 +1,5 @@
 " 定义函数AutoSetFileHead，自动插入文件头
-function! AutoSetShFileHead()
-    " 如果文件类型为.sh文件
-    if &filetype == 'ssh'
-        call setline(1, "\#!/bin/bash")
-	    call append(1,"# -*- coding:utf-8 -*-")
-    endif
-
-    normal G
-    normal o
-    normal o
-endfunc
-
-function! AutoSetPyFileHead()
+function! AutoSetFileHead()
     " 如果文件类型为python
     if &filetype == 'python'
         so ~/.vim/config/py_header.vim
@@ -23,13 +11,11 @@ function! AutoSetPyFileHead()
         so ~/.vim/config/go_header.vim
     endif
     
-    exec "1,9g/File Name.*:.*/s//File Name    : " .expand("%")
-    exe "1,8g/Creation Date:.*/s//Creation Date: " .strftime("%Y-%m-%d")
-    exe "1,8g/Last Modified:.*/s//Last Modified: " .strftime("%Y-%m-%d %H:%M:%S")
+    exec "1,8g/File Name.*:.*/s//File Name    : " .expand("%")
+    exec "1,8g/Creation Date:.*/s//Creation Date: " .strftime("%Y-%m-%d")
+    exec "1,8g/Last Modified:.*/s//Last Modified: " .strftime("%Y-%m-%d %H:%M:%S")
 
     normal G
-    normal o
-    normal o
 endfunc
 
 function! AutoSetCFileHead()
@@ -47,14 +33,11 @@ function! AutoSetCFileHead()
 
     normal G
     normal o
-    normal o
 endfunc
 
 " 更新时间
 function! AutoChangeModifiedTime()
     execute "normal ma"
-    " exe "1,6g/File Name:.*/s//File Name: " .expand("%")
-    " exe "1,6g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%Y-%m-%d %H:%M:%S")
     exe "1,9g/File Name.*:.*/s//File Name    : " .expand("%")
     exe "1,9g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%Y-%m-%d %H:%M:%S")
     execute "normal `a"

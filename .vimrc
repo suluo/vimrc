@@ -56,6 +56,15 @@ set scrolloff=5 " when scrolling, keep cursor 5 lines away from screen border
 " set selectmode=mouse,key
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
 
+"检测文件类型
+filetype on
+" 针对不同的文件类型采用不同的缩进格式
+filetype indent on
+"允许插件
+filetype plugin on
+"启动自动补全
+filetype plugin indent on
+
 " tabs and spaces handling
 set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
 set shiftwidth=4
@@ -94,14 +103,10 @@ set t_ti= t_te=
 " set spell
 " setlocal spelllang=en_us
 
-filetype plugin indent on
-"打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=preview,longest,menu " 代码补全
 " 文件头
 source ~/.vim/config/bufnewfile.vimrc
-" autocmd BufNewFile *.sh exec ":call AutoSetShFileHead()"
-" autocmd BufNewFile *.py,*.go exec ":call AutoSetPyFileHead()"
-autocmd BufNewFile *.sh,*.py,*.go exec ":call AutoSetPyFileHead()"
+autocmd BufNewFile *.sh,*.py,*.go exec ":call AutoSetFileHead()"
 autocmd BufNewFile *.c,*.cpp,*.h exec ":call AutoSetCFileHead()"
 autocmd BufWritePre,FileWritePre,FileAppendPre *.py,*.c,*.h,*.cpp execute ":call AutoChangeModifiedTime()"
 
