@@ -45,11 +45,6 @@ let g:indentLine_enabled = 1
 let g:autopep8_disable_show_diff=1
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 " *********************************************
-" nerdcommenter插件属性: 注释与反注释
-" 备注：多行注释只需要在normal模式下按v并移动光标选择需要注释的行，再按F4就可以为所有选中的行添加注释。
-" *********************************************
-map <F4> <leader>ci <CR>
-" *********************************************
 " jidi-vim设置插件属性: <Ctrl-n>(同时按下Ctrl和n键) 组合键用于触发jedi-vim的自动补齐功能
 " 备注:
 " Goto assignments: <leader>g (typical goto function);
@@ -62,11 +57,14 @@ map <F4> <leader>ci <CR>
 " *********************************************
 let g:jedi#completions_command = "<C-N>" 
 
-" tabu
-" 启动时自动focus
-" let g:tagbar_auto_faocus =1
-" 启动指定文件时自动开启tagbar
-autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+" *********************************************
+" nerdcommenter插件属性: 注释与反注释
+" 备注：多行注释只需要在normal模式下按v并移动光标选择需要注释的行，再按F4就可以为所有选中的行添加注释。
+" *********************************************
+map <F4> <leader>ci <CR>
+" 注释的时候自动加个空格, 强迫症必配
+let g:NERDSpaceDelims=1
+
 
 " Python-mode
 " Activate rope
@@ -110,21 +108,28 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_folding = 0
 
 " syntastic
-let g:syntastic_error_symbol='>>'
-let g:syntastic_warning_symbol='>'
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='►'
+"打开文件时自动进行检查
 let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
 let g:syntastic_enable_highlighting=1
+"进行实时检查，如果觉得卡顿，将下面的选项置为1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint(详细)快
-" let g:syntastic_python_checkers=['flake8', 'pep8'] " 使用pyflakes,速度比pylint(详细)快
+"let g:syntastic_python_checkers=['flake8', 'pep8', 'pylint']
 let g:syntastic_javascript_checkers = ['jsl', 'jshint']
 let g:syntastic_html_checkers=['tidy', 'jshint']
 " 修改高亮的背景色, 适应主题
 highlight SyntasticErrorSign guifg=white guibg=black
 
 " to see error location list
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
+"总是打开Location List（相当于QuickFix）窗口，如果你发现syntastic因为与其他插件冲突而经常崩溃，将下面选项置0
+let g:syntastic_always_populate_loc_list = 1
+"自动打开Locaton List，默认值为2，表示发现错误时不自动打开，当修正以后没有再发现错误时自动关闭，置1表示自动打开自动关闭，0表示关闭自动打开和自动关闭，3表示自动打开，但不自动关闭
+let g:syntastic_auto_loc_list = 1
+"自动跳转到发现的第一个错误或警告处
+let g:syntastic_auto_jump = 1
 let g:syntastic_loc_list_height = 5
 function! ToggleErrors()
     let old_last_winnr = winnr('$')
@@ -135,8 +140,9 @@ function! ToggleErrors()
     endif
 endfunction
 nnoremap <Leader>s :call ToggleErrors()<cr>
-" nnoremap <Leader>sn :lnext<cr>
-" nnoremap <Leader>sp :lprevious<cr>
+nnoremap <Leader>sn :lnext<cr>
+nnoremap <Leader>sp :lprevious<cr>
+
 
 "neocomplache config
 let g:neocomplcache_force_overwrite_completefunc = 1
@@ -155,3 +161,24 @@ let g:vim_markdown_frontmatter=1 "" 设置支持yaml语法
 
 " scala config
 let g:scala_scaladoc_indent = 1
+
+"ale
+"始终开启标志列
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+nmap <Leader>s :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>

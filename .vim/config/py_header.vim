@@ -10,20 +10,14 @@
 # Version      : Python 3.7
 ############################################
 import argparse
-import time
-import os
-import sys
-import asyncio
 
 import logging
-# logging.config.fileConfig('./conf/logging.ini')
-logger = logging.getLogger(__name__)
-
 
 
 
 
 def main(args):
+    """main function"""
     return args
 
 

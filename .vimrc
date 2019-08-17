@@ -37,19 +37,15 @@ colorscheme desert
 set guifont=Courier_new:h14:b:cDEFAULT
 
 " format
-set ruler 
-set autoindent
 set smartindent
 set cursorline
 " Match & Search
 set hlsearch
-set incsearch
 set showmatch
 set ignorecase
 set matchtime=1
 
 " 状态行
-set laststatus=2
 " set cmdheight=2 " 命令行高度
 set scrolloff=5 " when scrolling, keep cursor 5 lines away from screen border
 " set mouse=a
@@ -58,15 +54,14 @@ set scrolloff=5 " when scrolling, keep cursor 5 lines away from screen border
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
 
 " tabs and spaces handling
-set backspace=indent,eol,start
 set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
 set shiftwidth=4
-set tabstop=4
 set softtabstop=4
-set expandtab
-autocmd FileType python, scala, go setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType c, cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+" set expandtab
+set tabstop=4
+autocmd FileType python, scala, go setlocal shiftwidth=4 softtabstop=4
+autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 softtabstop=4
+autocmd FileType c, cpp setlocal shiftwidth=4 softtabstop=4
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " *********************************************
@@ -98,7 +93,7 @@ set pastetoggle=<F11>
 set spell
 setlocal spelllang=en_us
 
-filetype plugin indent on 
+filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 " 文件头

@@ -10,6 +10,8 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
+" 一些基础配置
+Bundle 'tpope/vim-sensible'
 " original repos on github
 " Fugitive: Git 集成，强烈推荐！
 Bundle 'tpope/vim-fugitive'
@@ -25,50 +27,47 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 " 目录树git显示
 Bundle 'Xuyuanp/nerdtree-git-plugin'
-" taglist 快速跳转函数 需要ctags
-Bundle 'taglist.vim'
-Bundle 'majutsushi/tagbar'
-" mark-down
-" Tabular: 自动对齐。
-Bundle 'godlygeek/tabular'
-" tabular 在前
-Bundle 'plasticboy/vim-markdown'
-" cp ~/.vim/bundle/vim-markdown/syntax/markdown.vim ~/.vim/syntax/
-" cp ~/.vim/bundle/vim-markdown/ftdetect/markdown.vim ~/.vim/ftdetect/
-" " all
-" 符号补全
-Bundle 'jiangmiao/auto-pairs' 
-" 在两端加上、修改、删除匹配的符号如（）
-Bundle 'tpope/vim-surround' 
-Bundle 'msanders/snipmate.vim'
-" 超级 搜索
-Bundle 'kien/ctrlp.vim'
-" 缩进指示
+" vim 8，tagbar的超集
+Bundle 'liuchengxu/vista.vim'
+" 搜索: 在vim normal模式下，按下ctrl+p，然后输入你要寻找的文件
+Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'FuzzyFinder'
+" 缩进指示线
 Bundle 'Yggdroot/indentLine'
-Bundle 'tell-k/vim-autopep8'
-" 快速注释
+" 快速注释: F4
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-commentary'
 " 语法检查
 Bundle 'scrooloose/syntastic'
 Bundle 'nvie/vim-flake8'
-Bundle 'hynek/vim-python-pep8-indent'
-" 语法增强
-Bundle 'klen/python-mode'
-" 补全
+" pep8 检查 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'hdima/python-syntax'
+Bundle 'w0rp/ale'
+" python import sort
+Bundle 'fisadev/vim-isort'
+" python-mode 和 python-mode-klen是一个东西
+Bundle 'klen/python-mode', { 'for': 'python', 'branch': 'develop' } 
 Bundle 'Python-mode-klen'
-" Bundle 'Pydiction' 
-" 补全提示
+" 符号补全
+Bundle 'jiangmiao/auto-pairs' 
+" 需要为已一些存在的代码加上括号，删除一对括号但保留其中的内容
+Bundle 'tpope/vim-surround' 
+" 自动格式化工具: F8，安装后运行:Autopep8就可以自动依照pep8的标准自动格式化代码
+Bundle 'tell-k/vim-autopep8'
+" 补全
+Bundle 'msanders/snipmate.vim'
+Bundle 'drmingdrmer/xptemplate'
+" 补全提示: \
 Bundle 'davidhalter/jedi-vim'
+" vim 8
+" 快速补全
+" Bundle 'completor.vim'
+" 深度学习补全
 " Bundle 'zxqfl/tabnine-vim'
-" neocomplete
-" Bundle 'Shougo/neoinclude.vim'
-" Bundle 'Shougo/neco-vim'
-" Bundle 'Shougo/neco-syntax'
-" Bundle 'Shougo/neocomplete.vim'
+
 " " Web
 "神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
 Bundle 'mattn/emmet-vim'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " scala
 " shell 执行如下命令
 " mkdir -p ~/.vim/{ftdetect,indent,syntax}
@@ -78,27 +77,23 @@ Bundle 'mattn/emmet-vim'
 "    done
 Bundle 'derekwyatt/vim-scala'
 
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'mileszs/ack.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-sensible'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" ...
+" 全功能：覆盖了很多插件
+" curl http://j.mp/spf13-vim3 -L -o - | sh
+" curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 Bundle 'spf13/spf13-vim'
-" vim 8
-" Bundle 'completor.vim'
-" Bundle 'liuchengxu/vista.vim'
-" Bundle 'timothycrosley/isort'
-" Bundle 'drmingdrmer/xptemplate'
+
 " Go
 " Bundle 'fatih/vim-go'
 " Bundle 'vim-gocode'
+
+" mark-down
+" Tabular: 假如我想让其中的两行按等号对齐，则将光标定位到有等号的那行，执行 :Tab /= 即可
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+" cp ~/.vim/bundle/vim-markdown/syntax/markdown.vim ~/.vim/syntax/
+" cp ~/.vim/bundle/vim-markdown/ftdetect/markdown.vim ~/.vim/ftdetect/
+" 实时预览markdown only in win or mac
+" suan/vim-instant-markdown
 
 
 filetype plugin indent on     " required!
