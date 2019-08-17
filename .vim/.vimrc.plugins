@@ -21,7 +21,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " 目录树
-Plug 'scrooloose/nerdtree', {"on": 'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jistr/vim-nerdtree-tabs'
 " 目录树git显示
 Plug 'Xuyuanp/nerdtree-git-plugin'
