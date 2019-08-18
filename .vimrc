@@ -96,8 +96,8 @@ syntax enable
 " }
 " Formatting {
     " tabs and spaces handling
+    set expandtab
     set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
-    autocmd Filetype gitcommit setlocal spell textwidth=72
 
     set cursorline cursorcolumn
 "    highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE

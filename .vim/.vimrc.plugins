@@ -26,6 +26,7 @@ Plug 'liuchengxu/vista.vim'
 " 缩进指示线
 Plug 'Yggdroot/indentLine'
 " 语法检查
+Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'hdima/python-syntax'
 Plug 'w0rp/ale'
