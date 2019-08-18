@@ -1,7 +1,7 @@
 " start vim plug
 call plug#begin('~/.vim/plugged')
 
-" required! 
+" required!
 Plug 'junegunn/vim-plug'
 
 " My Plugs here:
@@ -32,11 +32,10 @@ Plug 'w0rp/ale'
 " python import sort
 Plug 'fisadev/vim-isort'
 " 符号补全
-Plug 'jiangmiao/auto-pairs' 
+Plug 'jiangmiao/auto-pairs'
 " 自动格式化工具: F8，安装后运行:Autopep8就可以自动依照pep8的标准自动格式化代码
 Plug 'tell-k/vim-autopep8'
 " 补全
-Plug 'msanders/snipmate.vim'
 Plug 'drmingdrmer/xptemplate'
 " 补全提示: \
 Plug 'davidhalter/jedi-vim'
@@ -58,7 +57,7 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'derekwyatt/vim-scala'
 
 " python-mode: PyLint, Rope, Pydoc, breakpoints from box.
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' } 
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " 全功能：覆盖了很多插件 详细见 .vimrc.local
 Plug 'spf13/spf13-vim'

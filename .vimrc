@@ -91,6 +91,8 @@ syntax enable
 " General {
     set nospell
     set mouse=nicr
+    " ESC 立即生效
+    set timeoutlen=1000 ttimeoutlen=0
 " }
 " Formatting {
     " tabs and spaces handling
