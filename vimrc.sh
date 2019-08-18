@@ -16,6 +16,7 @@ set -e
 cd ~
 # 如果有老的 .vim/ 文件夹以及 .vimrc 文件，删掉; 软链接
 ln -sbv ~/vimrc/.vimrc ~/.vimrc
+ln -sbv ~/vimrc/.vimrc.local ~/.vimrc.local
 ln -sbv ~/vimrc/.vim ~/.vim
 # 获取 plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

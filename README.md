@@ -3,6 +3,7 @@
 ```
 # git clone 获取vim并.vimrc, .vim 正确的位置
 .vimrc
+.vimrc.local
 .vim
     config
     .vimrc.plugins
@@ -18,6 +19,8 @@ $ cd ~
 $ rm -rf .vim/
 $ rm .vimrc
 $ ln -s vimrc/.vimrc .
+# spf13
+$ ln -s vimrc/.vimrc.local .
 $ ln -s vimrc/.vim .
 # 获取Plug: 插件管理工具: https://github.com/junegunn/vim-plug
 $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

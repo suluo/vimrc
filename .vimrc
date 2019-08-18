@@ -1,9 +1,6 @@
 set nocompatible
-set showcmd
-syntax enable
-" syntax on
 "通过使用:comands 命令，告诉我们文件哪一行被改过
-set report=0 
+set report=0
 set number relativenumber
 " ********************************************
 " 行号配置: 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
@@ -25,33 +22,16 @@ set foldmethod=indent
 set foldcolumn=0            " 设置折叠区域的宽度
 setlocal foldlevel=1        " 设置折叠层数为
 set foldlevelstart=99       " 打开文件是默认不折叠代码
-"set foldclose=all          " 设置为自动关闭折叠                
+"set foldclose=all          " 设置为自动关闭折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
                             " 用空格键来开关折叠
-" ********************************************
-" 主题配置
-" *********************************************
-set t_Co=256
-let g:rehash256=1
-let g:molokai_original=1
-colorscheme desert
-set guifont=Courier_new:h14:b:cDEFAULT
-
-" format
-set smartindent
-set cursorline
 " Match & Search
-set hlsearch
-set showmatch
-set ignorecase
 set matchtime=1
 " 最大列
 set cc=120
 
 " 状态行
 " set cmdheight=2 " 命令行高度
-set scrolloff=5 " when scrolling, keep cursor 5 lines away from screen border
-" set mouse=a
 " set selection=exclusive
 " set selectmode=mouse,key
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
@@ -59,28 +39,6 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
 "检测文件类型
 filetype on
 filetype plugin indent on
-" tabs and spaces handling
-set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab
-" autocmd FileType python, scala, go setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType c, cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" *********************************************
-" 分割布局相关
-" *********************************************
-set splitbelow
-set splitright
-" 快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局
-" ctrl+k切换到上面布局，ctrl+j切换到下面布局
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " -----------------------
 " 键盘
@@ -88,14 +46,17 @@ nnoremap <C-H> <C-W><C-H>
 noremap <silent><expr> j (v:count == 0? 'gj': 'j')
 noremap <silent><expr> k (v:count == 0? 'gk': 'k')
 set clipboard+=unnamed "共享剪贴板
-set mouse=nicr
-set pastetoggle=<F11>
+" Win {
+    set splitbelow
+    set splitright
+    " 快捷键，ctrl+l切换到左边布局，ctrl+h切换到右边布局 ctrl+k切换到上面布局，ctrl+j切换到下面布局
+    nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-L> <C-W><C-L>
+    nnoremap <C-H> <C-W><C-H>
+" }
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉; 好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
-
-" 拼写检查
-" set spell
-" setlocal spelllang=en_us
+"set t_ti= t_te=
 
 set completeopt=preview,longest,menu " 代码补全
 
@@ -107,10 +68,40 @@ imap <F6> <C-x><C-o>
 if filereadable(expand("~/.vim/.vimrc.plugins"))
 source ~/.vim/.vimrc.plugins
 endif
+" spf13配置
+if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
+source ~/.vim/plugged/spf13-vim/.vimrc
+endif
+
 " 插件配置
 if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
 source ~/.vim/.vimrc.cfg.plugins
 endif
+
+" VIM UI {
+    colorscheme desert
+    " colorscheme molokai
+    set t_Co=256
+    let g:rehash256=1
+    let g:molokai_original=1
+    set background=dark
+    set guifont=Courier_new:h14:b:cDEFAULT
+" }
+syntax enable
+" General {
+    set nospell
+    set mouse=nicr
+" }
+" Formatting {
+    " tabs and spaces handling
+    set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
+    autocmd Filetype gitcommit setlocal spell textwidth=72
+
+    set cursorline cursorcolumn
+"    highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+    "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+    set smartindent
+" }
 
 " 文件头
 " 使用插件：copyright
@@ -121,6 +112,13 @@ autocmd BufNewFile *.{py} exec ":call AutoSetFileHead()"
 " autocmd BufNewFile *.{py,h,c,cpp,go} exec ":call AutoChangeModifiedTime()"
 " autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
 map <F3> :call AutoSetFileTail()<CR>
+" 保存时自动删除行尾空格
+au BufWrite * :call DeleteTrailingWS()
+func! DeleteTrailingWS()
+    exec "normal mz"
+    %s/\s\+$//ge
+    exec "normal `z"
+endfunc
 
 " 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
 if has("autocmd")
