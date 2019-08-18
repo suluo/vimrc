@@ -58,22 +58,16 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1,gb2312,cp936
 
 "检测文件类型
 filetype on
-" 针对不同的文件类型采用不同的缩进格式
-filetype indent on
-"允许插件
-filetype plugin on
-"启动自动补全
 filetype plugin indent on
-
 " tabs and spaces handling
 set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
 set shiftwidth=4
-set softtabstop=4
-" set expandtab
 set tabstop=4
-autocmd FileType python, scala, go setlocal shiftwidth=4 softtabstop=4
-autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 softtabstop=4
-autocmd FileType c, cpp setlocal shiftwidth=4 softtabstop=4
+set softtabstop=4
+set expandtab
+" autocmd FileType python, scala, go setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType html, htmldjango, javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType c, cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " *********************************************
@@ -104,16 +98,6 @@ set t_ti= t_te=
 " setlocal spelllang=en_us
 
 set completeopt=preview,longest,menu " 代码补全
-" 文件头
-source ~/.vim/config/bufnewfile.vimrc
-autocmd BufNewFile *.sh,*.py,*.go exec ":call AutoSetFileHead()"
-autocmd BufNewFile *.c,*.cpp,*.h exec ":call AutoSetCFileHead()"
-autocmd BufWritePre,FileWritePre,FileAppendPre *.py,*.c,*.h,*.cpp execute ":call AutoChangeModifiedTime()"
-
-" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 " Go
 " gocode 快捷键
@@ -127,6 +111,22 @@ endif
 if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
 source ~/.vim/.vimrc.cfg.plugins
 endif
+
+" 文件头
+" 使用插件：copyright
+source ~/.vim/config/bufnewfile.vimrc
+autocmd BufNewFile *.{py} exec ":call AutoSetFileHead()"
+" autocmd BufNewFile *.{sh,py,go} exec ":call AutoSetFileHead()"
+" autocmd BufNewFile *.{c,cpp,h}  exec ":call AutoSetCFileHead()"
+" autocmd BufNewFile *.{py,h,c,cpp,go} exec ":call AutoChangeModifiedTime()"
+" autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
+map <F3> :call AutoSetFileTail()<CR>
+
+" 打开自动定位到最后编辑的位置, 需要确认 .viminfo 当前用户可写
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 """"""""""""""""""""""
 "Quickly Run
 """"""""""""""""""""""

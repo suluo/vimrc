@@ -3,6 +3,8 @@
 " *********************************************
 " 开启vim的时候默认开启NERDTree
 autocmd VimEnter * NERDTree
+wincmd w
+autocmd VimEnter * wincmd w
 " F2开启和关闭树
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeChDirMode=1
@@ -127,6 +129,7 @@ let g:syntastic_enable_highlighting=1
 let g:syntastic_check_on_wq = 0
 " 使用flake8,速度比pylint(详细)快
 let g:syntastic_python_checkers=['flake8', 'pylint']
+let g:flake8_ignore="E501,W293"
 let g:syntastic_javascript_checkers = ['jsl', 'jshint']
 let g:syntastic_html_checkers=['tidy', 'jshint']
 " 修改高亮的背景色, 适应主题
@@ -191,3 +194,7 @@ nmap sn <Plug>(ale_next_wrap)
 nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <Leader>d :ALEDetail<CR>
+
+" copyright
+let g:file_copyright_name = "suluo"
+let g:file_copyright_email = "sampon.suluo@gmail.com"

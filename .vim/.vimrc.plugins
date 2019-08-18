@@ -9,6 +9,8 @@ Plug 'junegunn/vim-plug'
 "
 " 一些基础配置
 Plug 'tpope/vim-sensible'
+" copyright
+Plug 'nine2/vim-copyright'
 " original repos on github
 " Fugitive: Git 集成，强烈推荐！
 Plug 'tpope/vim-fugitive'
