@@ -66,17 +66,34 @@ imap <F6> <C-x><C-o>
 
 " 插件安装
 if filereadable(expand("~/.vim/.vimrc.plugins"))
-source ~/.vim/.vimrc.plugins
+    source ~/.vim/.vimrc.plugins
 endif
-" spf13配置
-if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
-source ~/.vim/plugged/spf13-vim/.vimrc
-endif
-
-" 插件配置
-if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
-source ~/.vim/.vimrc.cfg.plugins
-endif
+" Spf13: {
+"     Vimrc: {
+        if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
+            source ~/.vim/plugged/spf13-vim/.vimrc
+        endif
+        " if filereadable(expand("~/.vimrc.local"))
+        "     source ~/.vimrc.local
+        " endif
+"     }
+"     Unmap: {
+        "
+        nunmap j
+        nunmap k
+        iunmap <Esc>
+        iunmap <CR>
+        unmap <F5>
+        unmap <F6>
+        unmap <F8>
+"     }
+" Plugin Cfg: {
+    if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
+        source ~/.vim/.vimrc.cfg.plugins
+    endif
+" }
+"
+" }
 
 " VIM UI {
     colorscheme desert
@@ -101,7 +118,7 @@ syntax enable
 
     set cursorline cursorcolumn
 "    highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-    "highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+"    highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
     set smartindent
 " }
 

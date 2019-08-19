@@ -42,7 +42,7 @@ Plug 'drmingdrmer/xptemplate'
 Plug 'davidhalter/jedi-vim'
 " vim 8
 " 深度学习补全
-" Plug 'zxqfl/tabnine-vim'
+Plug 'zxqfl/tabnine-vim'
 
 " " Web
 "神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
