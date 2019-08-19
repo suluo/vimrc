@@ -1,4 +1,3 @@
-
 ### 本项目 .vimrc配置步骤
 ```
 # git clone 获取vim并.vimrc, .vim 正确的位置
@@ -15,16 +14,17 @@
 操作如下
 ```bash
 $ cd ~
-# 如果有老的 .vim/ 文件夹以及 .vimrc 文件，删掉; 软链接
-$ rm -rf .vim/
-$ rm .vimrc
-$ ln -s vimrc/.vimrc .
-# spf13
-$ ln -s vimrc/.vimrc.local .
-$ ln -s vimrc/.vim .
-# 获取Plug: 插件管理工具: https://github.com/junegunn/vim-plug
+$ git clone 
+# 获取 Plug: 插件管理工具: https://github.com/junegunn/vim-plug
 $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# 建立.vim 软链接
+$ rm -rf .vim/
+$ ln -s vimrc/.vim .
+# spf-13
+$ ln -s vimrc/.vimrc .vimrc.before.local
+$ ln -s vimrc/.vimrc.local .
+$ ln -s vimrc/.vim/.vimrc.plugins .vimrc.bundle.local
 # .vimrc 生效
 $ source .vimrc
 # PlguInstall安装vim插件
