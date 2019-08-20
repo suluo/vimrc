@@ -12,6 +12,15 @@
             \ "Unknown"   : "?"
             \ }
 "     }
+"     Neomake: {
+        call neomake#configure#automake('nw', 500)
+"     }
+"     Deoplete-tabnine: {
+"        call deoplete#custom#var('tabnine', {
+"            \ 'line_limit': 500,
+"            \ 'max_num_results': 20,
+"            \ })
+"     }
 "     Autopep8: {
         " autopep8设置插件属性: 在Normal模式输入:Autopep8或按F8就可以自动依照pep8的标准自动格式化代码
         let g:autopep8_disable_show_diff=1

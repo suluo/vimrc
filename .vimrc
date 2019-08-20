@@ -73,18 +73,14 @@ endif
         if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
             source ~/.vim/plugged/spf13-vim/.vimrc
         endif
-        " if filereadable(expand("~/.vimrc.local"))
-        "     source ~/.vimrc.local
-        " endif
+        if filereadable(expand("~/.vimrc.bundles.local"))
+            source ~/.vimrc.bundles.local
+        endif
 "     }
 "     Unmap: {
         "
         nunmap j
         nunmap k
-        iunmap <Esc>
-        iunmap <CR>
-        unmap <F5>
-        unmap <F6>
         unmap <F8>
 "     }
 " Plugin Cfg: {

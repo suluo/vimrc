@@ -1,6 +1,14 @@
+function! s:deregister(repo)
+    let repo = substitute(a:repo, '[\/]\+$', '', '')
+    let name = fnamemodify(repo, ':t:s?\.git$??')
+    call remove(g:plugs, name)
+    call remove(g:plugs_order, index(g:plugs_order, name))
+endfunction
+
+command! -nargs=1 -bar UnPlug call s:deregister(<args>)
+
 " start vim plug
 call plug#begin('~/.vim/plugged')
-
 " required!
 Plug 'junegunn/vim-plug'
 
@@ -10,26 +18,8 @@ Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-sensible'
 " copyright
 Plug 'nine2/vim-copyright'
-" Fugitive: Git 集成，强烈推荐！
-Plug 'tpope/vim-fugitive'
-" git diff
-Plug 'airblade/vim-gitgutter'
-" " Solarized: 非常流行的配色。
-Plug 'altercation/vim-colors-solarized'
-" 目录树
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
-" 目录树git显示
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" vim 8，tagbar的超集
-Plug 'liuchengxu/vista.vim'
 " 缩进指示线
 Plug 'Yggdroot/indentLine'
-" 语法检查
-Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
-Plug 'hdima/python-syntax'
-Plug 'w0rp/ale'
 " python import sort
 Plug 'fisadev/vim-isort'
 " 符号补全
@@ -40,14 +30,11 @@ Plug 'tell-k/vim-autopep8'
 Plug 'drmingdrmer/xptemplate'
 " 补全提示: \
 Plug 'davidhalter/jedi-vim'
-" vim 8
-" 深度学习补全
-Plug 'zxqfl/tabnine-vim'
 
 " " Web
 "神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
 Plug 'mattn/emmet-vim'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'rstacruz/sparkup'
 " scala
 " shell 执行如下命令
 " mkdir -p ~/.vim/{ftdetect,indent,syntax}
@@ -61,8 +48,39 @@ Plug 'derekwyatt/vim-scala'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " 全功能：覆盖了很多插件 详细见 .vimrc.local
-Plug 'spf13/spf13-vim'
+Plug 'spf13/spf13-vim', { 'branch': '3.0' }
+" 目录树
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
+" 目录树git显示
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Fugitive: Git 集成，强烈推荐！
+Plug 'tpope/vim-fugitive'
+" git diff
+Plug 'airblade/vim-gitgutter'
+" NerdTree 二代: vim8.1
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+" 语法检查
+Plug 'neomake/neomake'
+Plug 'nvie/vim-flake8'
+Plug 'hdima/python-syntax'
+Plug 'w0rp/ale'
+" powerline 二代
 Plug 'vim-airline/vim-airline'
+" ctrl 二代: vim8
+Plug 'Shougo/denite.nvim'
+" tagbar 二代： vim8, ctags
+Plug 'liuchengxu/vista.vim'
+" neocomplete 二代
+" Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins'  }
+" 深度学习补全: vim8
+Plug 'zxqfl/tabnine-vim'
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
+" " Solarized: 非常流行的配色。
+Plug 'altercation/vim-colors-solarized'
+UnPlug 'Shougo/neocomplete.vim'
 
 " Go
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
