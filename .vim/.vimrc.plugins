@@ -45,7 +45,7 @@ Plug 'rstacruz/sparkup'
 Plug 'derekwyatt/vim-scala'
 
 " python-mode: PyLint, Rope, Pydoc, breakpoints from box.
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " 全功能：覆盖了很多插件 详细见 .vimrc.local
 Plug 'spf13/spf13-vim', { 'branch': '3.0' }
@@ -63,9 +63,8 @@ Plug 'Shougo/defx.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 " 语法检查
-Plug 'neomake/neomake'
-Plug 'nvie/vim-flake8'
-Plug 'hdima/python-syntax'
+Plug 'scrooloose/syntastic'
+" Plug 'nvie/vim-flake8'
 Plug 'w0rp/ale'
 " powerline 二代
 Plug 'vim-airline/vim-airline'
@@ -81,6 +80,8 @@ Plug 'zxqfl/tabnine-vim'
 " " Solarized: 非常流行的配色。
 Plug 'altercation/vim-colors-solarized'
 UnPlug 'Shougo/neocomplete.vim'
+" 快速注释
+Plug 'scrooloose/nerdcommenter'
 
 " Go
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }

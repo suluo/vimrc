@@ -78,7 +78,6 @@ endif
         endif
 "     }
 "     Unmap: {
-        "
         nunmap j
         nunmap k
         unmap <F8>
@@ -125,7 +124,7 @@ autocmd BufNewFile *.{py} exec ":call AutoSetFileHead()"
 " autocmd BufNewFile *.{sh,py,go} exec ":call AutoSetFileHead()"
 " autocmd BufNewFile *.{c,cpp,h}  exec ":call AutoSetCFileHead()"
 " autocmd BufNewFile *.{py,h,c,cpp,go} exec ":call AutoChangeModifiedTime()"
-" autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
+autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
 map <F3> :call AutoSetFileTail()<CR>
 " 保存时自动删除行尾空格
 au BufWrite * :call DeleteTrailingWS()

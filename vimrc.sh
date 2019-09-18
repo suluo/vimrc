@@ -24,6 +24,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # .vimrc 生效
 source .vimrc
 
+pip install jedi
 pip install flake8
 pip install pep8
 pip install isort
