@@ -68,10 +68,16 @@ imap <F6> <C-x><C-o>
 if filereadable(expand("~/.vim/.vimrc.plugins"))
 source ~/.vim/.vimrc.plugins
 endif
-" spf13配置
-if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
-source ~/.vim/plugged/spf13-vim/.vimrc
-endif
+" Use spf13 vimrc if available {
+    if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
+        " source ~/.vim/plugged/spf13-vim/.vimrc
+    endif
+" }
+" Use local vimrc if available {
+    if filereadable(expand("~/.vimrc.plug.local"))
+        source ~/.vimrc.local
+    endif
+" }
 
 " 插件配置
 if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
@@ -91,8 +97,9 @@ syntax enable
 " General {
     set nospell
     set mouse=nicr
-    " ESC 立即生效
+    " 功能键时间
     set timeoutlen=1000 ttimeoutlen=0
+    set ttimeout ttimeoutlen=50
 " }
 " Formatting {
     " tabs and spaces handling
@@ -112,7 +119,7 @@ autocmd BufNewFile *.{py} exec ":call AutoSetFileHead()"
 " autocmd BufNewFile *.{sh,py,go} exec ":call AutoSetFileHead()"
 " autocmd BufNewFile *.{c,cpp,h}  exec ":call AutoSetCFileHead()"
 " autocmd BufNewFile *.{py,h,c,cpp,go} exec ":call AutoChangeModifiedTime()"
-" autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
+autocmd BufWritePre,FileWritePre,FileAppendPre *.{py,h,c,cpp} exec ":call AutoChangeModifiedTime()"
 map <F3> :call AutoSetFileTail()<CR>
 " 保存时自动删除行尾空格
 au BufWrite * :call DeleteTrailingWS()
