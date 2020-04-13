@@ -1,9 +1,20 @@
 " Plugins {
+    " Defx: {
+        call defx#custom#option('_', {
+              \ 'winwidth': 30,
+              \ 'split': 'vertical',
+              \ 'direction': 'botright',
+              \ 'show_ignored_files': 0,
+              \ 'buffer_name': '',
+              \ 'toggle': 1,
+              \ 'resume': 1
+              \ })
+    " }
     " NerdTree {
         " F2开启和关闭树
         map <F2> :NERDTreeToggle<CR>
         " 开启vim的时候默认开启NERDTree
-        autocmd VimEnter * NERDTree
+        " autocmd VimEnter * NERDTree
         wincmd w
         autocmd VimEnter * wincmd w
         let NERDTreeChDirMode=1
@@ -26,9 +37,19 @@
         " 注释的时候自动加个空格, 强迫症必配
         let g:NERDSpaceDelims=1
     " }
-    " neocomplete: {
+    " Neocomplete: {
         let g:neocomplcache_force_overwrite_completefunc = 1
         " let g:NeoComplCache_DisableAutoComplete = 1 " 不自动弹出补全列表
+    " }
+    " Tagbar: {
+        " autocmd VimEnter * nested :TagbarOpen
+        nmap <F8> :TagbarToggle<CR>
+        " 设置标签子窗口的宽度
+        let tagbar_width=32
+        " 设置tagbar子窗口的位置出现在主编辑区的左边
+        "let tagbar_left=1
+        " tagbar子窗口中不显示冗余帮助信息
+        let g:tagbar_compact=1
     " }
 " }
 
@@ -38,7 +59,6 @@
 " AutoClose
 " Ask.vim
 " Tabularize
-" Tagbar
 " EasyMotion
 " Tabular: 假如我想让其中的两行按等号对齐，则将光标定位到有等号的那行，执行 :Tab /= 即可
 " Ctrl: 在vim normal模式下，按下ctrl+p
