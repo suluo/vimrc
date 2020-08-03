@@ -3,17 +3,6 @@ set nocompatible
 set report=0
 set number relativenumber
 " ********************************************
-" 行号配置: 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-" *********************************************
-function! NumberToggle()
-   if(&relativenumber == 1)
-     set norelativenumber nonumber
-   else
-     set relativenumber number
-   endif
- endfunc
- nnoremap <C-n> :call NumberToggle()<cr>
-" ********************************************
 " fold配置
 " *********************************************
 set foldenable              " 开始折叠
