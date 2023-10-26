@@ -11,9 +11,8 @@ set foldmethod=indent
 set foldcolumn=0            "" 设置折叠区域的宽度
 setlocal foldlevel=1        "" 设置折叠层数为
 set foldlevelstart=99       "" 打开文件是默认不折叠代码
-"set foldclose=all          "" 设置为自动关闭折叠
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-                            "" 用空格键来开关折叠
+"" set foldclose=all          "" 设置为自动关闭折叠
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>   "" 用空格键来开关折叠
 "" Match & Search
 set matchtime=1
 "" 最大列
@@ -47,7 +46,8 @@ set clipboard+=unnamed "" 共享剪贴板
 "" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉; 好处：误删什么的，如果以前屏幕打开，可以找回
 "" set t_ti= t_te=
 
-set completeopt=preview,longest,menu " 代码补全
+set completeopt=preview,longest,menu 
+"" 代码补全
 
 "" Go
 "" gocode 快捷键
@@ -98,7 +98,7 @@ syntax enable
 "" Formatting {
     " tabs and spaces handling
     set expandtab
-    set whichwrap+=<,>,h,l "允许光标和 backspace 跨越行边界
+    set whichwrap+=<,>,h,l  "" 允许光标和 backspace 跨越行边界
 
     set cursorline cursorcolumn
 ""    highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
