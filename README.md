@@ -33,6 +33,12 @@ $ vim
 # 等待安装完成退出vim
 ```
 
+### bachrc oh-my-zsh
+```bash
+$ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+$ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+$ chsh -s /bin/zsh
+```
 
 ### 其他.vimrc配置
 [Vimrc复制可用](http://www.cnblogs.com/wangj08/archive/2013/03/13/2957309.html)
