@@ -1,6 +1,3 @@
-"" shell commands
-alias ls='ls --color'
-
 set nocompatible
 "" 通过使用:comands 命令，告诉我们文件哪一行被改过
 set report=0
