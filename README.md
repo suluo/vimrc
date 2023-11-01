@@ -1,5 +1,5 @@
 
-### 本项目 .vimrc配置步骤
+### .vimrc配置步骤
 ```
 # git clone 获取vim并.vimrc, .vim 正确的位置
 .vimrc
@@ -63,11 +63,6 @@ curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```bash
 brew install vim --with-lua
 ```
-
-##### YouCompleteMe
-需要vim7.4
-
-[Vim代码自动补全的神器：YouCompleteMe](http://blog.jobbole.com/58978/)
 
 ##### mark-down
 [vim 配置markdown语法高亮](http://luodw.cc/2015/09/26/vim-md/)
