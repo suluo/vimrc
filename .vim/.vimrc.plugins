@@ -47,8 +47,9 @@ Plug 'derekwyatt/vim-scala'
 " python-mode: PyLint, Rope, Pydoc, breakpoints from box.
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
-" 全功能：覆盖了很多插件 详细见 .vimrc.local
-Plug 'spf13/spf13-vim', { 'branch': '3.0' }
+ " 全功能：历史上通过 spf13-vim 引入的一揽子插件，已不再默认使用。
+ " 若确实需要，可手动取消下面一行注释后 :PlugInstall
+ " Plug 'spf13/spf13-vim', { 'branch': '3.0' }
 " 目录树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'jistr/vim-nerdtree-tabs'

@@ -54,31 +54,20 @@ set completeopt=preview,longest,menu
 "" gocode 快捷键
 imap <F6> <C-x><C-o>
 
-"" 插件安装
+"" 插件安装（全部由 vim-plug 管理，目录：~/.vim/plugged）
 if filereadable(expand("~/.vim/.vimrc.plugins"))
     source ~/.vim/.vimrc.plugins
 endif
-"" Spf13: {
-""     Vimrc: {
-        if filereadable(expand("~/.vim/plugged/spf13-vim/.vimrc"))
-            source ~/.vim/plugged/spf13-vim/.vimrc
-        endif
-        if filereadable(expand("~/.vimrc.bundles.local"))
-            source ~/.vimrc.bundles.local
-        endif
-""     }
-""     Unmap: {
-        nunmap j
-        nunmap k
-        unmap <F8>
-""     }
-"" Plugin Cfg: {
-    if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
-        source ~/.vim/.vimrc.cfg.plugins
-    endif
-"" }
-""
-"" }
+
+"" 你的本地 bundles/插件配置（历史上与 spf13 深度绑定，目前已与 spf13 脱钩）
+if filereadable(expand("~/.vimrc.bundles.local"))
+    source ~/.vimrc.bundles.local
+endif
+
+"" 规范化的插件行为配置（不包含 Plug 声明）
+if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
+    source ~/.vim/.vimrc.cfg.plugins
+endif
 
 "" VIM UI {
     colorscheme desert
