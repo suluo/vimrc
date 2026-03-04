@@ -47,7 +47,7 @@ set clipboard+=unnamed "" 共享剪贴板
 "" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉; 好处：误删什么的，如果以前屏幕打开，可以找回
 "" set t_ti= t_te=
 
-set completeopt=preview,longest,menu 
+set completeopt=menuone,noinsert,noselect 
 "" 代码补全
 
 "" Go
@@ -70,7 +70,9 @@ if filereadable(expand("~/.vim/.vimrc.cfg.plugins"))
 endif
 
 "" VIM UI {
-    colorscheme desert
+    " 默认使用 solarized（需安装 altercation/vim-colors-solarized）
+    colorscheme solarized
+    " colorscheme desert
     " colorscheme molokai
     set t_Co=256
     let g:rehash256=1
@@ -81,6 +83,7 @@ endif
 syntax enable
 "" General {
     set nospell
+    set hidden
     set mouse=nicr
     "" ESC 立即生效
     set timeoutlen=1000 ttimeoutlen=0

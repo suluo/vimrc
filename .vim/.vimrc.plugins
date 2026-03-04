@@ -1,8 +1,15 @@
 function! s:deregister(repo)
     let repo = substitute(a:repo, '[\/]\+$', '', '')
     let name = fnamemodify(repo, ':t:s?\.git$??')
-    call remove(g:plugs, name)
-    call remove(g:plugs_order, index(g:plugs_order, name))
+    if exists('g:plugs') && has_key(g:plugs, name)
+        call remove(g:plugs, name)
+    endif
+    if exists('g:plugs_order')
+        let l:idx = index(g:plugs_order, name)
+        if l:idx >= 0
+            call remove(g:plugs_order, l:idx)
+        endif
+    endif
 endfunction
 
 command! -nargs=1 -bar UnPlug call s:deregister(<args>)
@@ -26,15 +33,12 @@ Plug 'fisadev/vim-isort'
 Plug 'jiangmiao/auto-pairs'
 " 自动格式化工具: F8，安装后运行:Autopep8就可以自动依照pep8的标准自动格式化代码
 Plug 'tell-k/vim-autopep8'
-" 补全
-Plug 'drmingdrmer/xptemplate'
-" 补全提示: \
-Plug 'davidhalter/jedi-vim'
+" 补全 / LSP （coc.nvim）
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " " Web
-"神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
+" 神级插件，ZenCoding(原名)可以让你以一种神奇而无比爽快的感觉写HTML、CSS
 Plug 'mattn/emmet-vim'
-Plug 'rstacruz/sparkup'
 " scala
 " shell 执行如下命令
 " mkdir -p ~/.vim/{ftdetect,indent,syntax}
@@ -50,22 +54,15 @@ Plug 'derekwyatt/vim-scala'
  " 全功能：历史上通过 spf13-vim 引入的一揽子插件，已不再默认使用。
  " 若确实需要，可手动取消下面一行注释后 :PlugInstall
  " Plug 'spf13/spf13-vim', { 'branch': '3.0' }
-" 目录树
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
-" 目录树git显示
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" 目录树（二代，基于 defx）
+Plug 'Shougo/defx.nvim'
 " Fugitive: Git 集成，强烈推荐！
 Plug 'tpope/vim-fugitive'
 " git diff
 Plug 'airblade/vim-gitgutter'
-" NerdTree 二代: vim8.1
-Plug 'Shougo/defx.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-" 语法检查
-Plug 'scrooloose/syntastic'
-" Plug 'nvie/vim-flake8'
+" 语法检查（ALE 替代 syntastic）
 Plug 'w0rp/ale'
 " powerline 二代
 Plug 'vim-airline/vim-airline'
@@ -75,14 +72,26 @@ Plug 'Shougo/denite.nvim'
 Plug 'liuchengxu/vista.vim'
 " neocomplete 二代
 " Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins'  }
-" 深度学习补全: vim8
-Plug 'zxqfl/tabnine-vim'
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh'  }
+" 深度学习补全: （改由 coc 扩展负责）
 " " Solarized: 非常流行的配色。
 Plug 'altercation/vim-colors-solarized'
 UnPlug 'Shougo/neocomplete.vim'
 " 快速注释
 Plug 'scrooloose/nerdcommenter'
+
+" 文本对象 & 操作增强
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+" 自动检测缩进风格
+Plug 'tpope/vim-sleuth'
+
+" 模糊查找（需本地安装 fzf 可执行文件）
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" 快速移动
+Plug 'easymotion/vim-easymotion'
 
 " Go
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }

@@ -1,36 +1,36 @@
 " Plugins: {
-"     Syntastic {
-        let g:syntastic_enable_signs = 1
-        "打开文件时自动进行检查
-        let g:syntastic_check_on_open=1
-        let g:syntastic_enable_highlighting=1
-        ""进行实时检查，如果觉得卡顿，将下面的选项置为1
-        let g:syntastic_check_on_wq = 0
-        " 使用flake8,速度比pylint(详细)快
-        let g:syntastic_python_checkers=['flake8', 'pep8', 'pylint']
-        let g:syntastic_python_pylint_args="-d C0103,C0111,R0201"
-        let g:syntastic_python_flake8_args='--ignore=F821,E302,E501'
-        " " 修改高亮的背景色, 适应主题
-        highlight SyntasticErrorSign guifg=white guibg=black
-        " " to see error location list
-        " "总是打开Location List（相当于QuickFix）窗口，如果你发现syntastic因为与其他插件冲突而经常崩溃，将下面选项置0
-        " let g:syntastic_always_populate_loc_list = 1
-        " "自动打开Locaton List，默认值为2，表示发现错误时不自动打开，当修正以后没有再发现错误时自动关闭，置1表示自动打开自动关闭，0表示关闭自动打开和自动关闭，3表示自动打开，但不自动关闭
-        let g:syntastic_auto_loc_list = 1
-        "自动跳转到发现的第一个错误或警告处
-        let g:syntastic_auto_jump = 1
-        let g:syntastic_loc_list_height = 5
-        function! ToggleErrors()
-            let old_last_winnr = winnr('$')
-            lclose
-            if old_last_winnr == winnr('$')
-             " Nothing was closed, open syntastic error location panel
-                Errors
-            endif
-        endfunction
-        nnoremap <Leader>s :call ToggleErrors()<cr>
-        nnoremap <Leader>sn :lnext<cr>
-        nnoremap <Leader>sp :lprevious<cr>"
+"     Syntastic （已弃用，改用 ALE）{
+"        let g:syntastic_enable_signs = 1
+"        "打开文件时自动进行检查
+"        let g:syntastic_check_on_open=1
+"        let g:syntastic_enable_highlighting=1
+"        ""进行实时检查，如果觉得卡顿，将下面的选项置为1
+"        let g:syntastic_check_on_wq = 0
+"        " 使用flake8,速度比pylint(详细)快
+"        let g:syntastic_python_checkers=['flake8', 'pep8', 'pylint']
+"        let g:syntastic_python_pylint_args="-d C0103,C0111,R0201"
+"        let g:syntastic_python_flake8_args='--ignore=F821,E302,E501'
+"        " " 修改高亮的背景色, 适应主题
+"        highlight SyntasticErrorSign guifg=white guibg=black
+"        " " to see error location list
+"        " "总是打开Location List（相当于QuickFix）窗口，如果你发现syntastic因为与其他插件冲突而经常崩溃，将下面选项置0
+"        " let g:syntastic_always_populate_loc_list = 1
+"        " "自动打开Locaton List，默认值为2，表示发现错误时不自动打开，当修正以后没有再发现错误时自动关闭，置1表示自动打开自动关闭，0表示关闭自动打开和自动关闭，3表示自动打开，但不自动关闭
+"        let g:syntastic_auto_loc_list = 1
+"        "自动跳转到发现的第一个错误或警告处
+"        let g:syntastic_auto_jump = 1
+"        let g:syntastic_loc_list_height = 5
+"        function! ToggleErrors()
+"            let old_last_winnr = winnr('$')
+"            lclose
+"            if old_last_winnr == winnr('$')
+"             " Nothing was closed, open syntastic error location panel
+"                Errors
+"            endif
+"        endfunction
+"        nnoremap <Leader>s :call ToggleErrors()<cr>
+"        nnoremap <Leader>sn :lnext<cr>
+"        nnoremap <Leader>sp :lprevious<cr>"
 "     }
 "     Nerdtree-git-plugin {
         let g:NERDTreeIndicatorMapCustom = {
@@ -123,4 +123,54 @@
         let g:file_copyright_name = "suluo"
         let g:file_copyright_email = "sampon.suluo@gmail.com"
     " }
+
+" Coc.nvim（LSP & 补全）
+if exists('*coc#rpc#start')
+    " 推荐的补全和消息选项
+    set completeopt=menuone,noinsert,noselect
+    set shortmess+=c
+    set updatetime=300
+
+    " 全局扩展（可按需增减）
+    let g:coc_global_extensions = [
+                \ 'coc-pyright',
+                \ 'coc-json',
+                \ 'coc-tsserver',
+                \ 'coc-snippets'
+                \ ]
+
+    " 常用跳转/重构
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " 显示诊断与代码操作
+    nnoremap <silent> <leader>rn <Plug>(coc-rename)
+    nnoremap <silent> <leader>ac <Plug>(coc-codeaction)
+    nnoremap <silent> <leader>qf <Plug>(coc-fix-current)
+    nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+endif
+
+" defx 目录树配置（替代 NERDTree）
+if exists(':Defx')
+    function! s:defx_toggle() abort
+        " 如果已经有 defx 窗口，则关闭
+        for win in range(1, winnr('$'))
+            if getbufvar(winbufnr(win), '&filetype') ==# 'defx'
+                execute win . 'wincmd c'
+                return
+            endif
+        endfor
+        " 打开新的 defx 窗口
+        execute 'Defx -listed -columns=mark:indent:icons:filename -split=vertical -winwidth=30 -direction=topleft -buffer-name=defx'
+    endfunction
+
+    nnoremap <silent> <F2> :call <SID>defx_toggle()<CR>
+endif
+
+" vim-airline 主题
+if exists('g:airline_symbols')
+    let g:airline_theme='solarized'
+endif
 " }
